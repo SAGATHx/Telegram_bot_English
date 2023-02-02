@@ -1,4 +1,3 @@
-TOKEN = '5687600588:AAGjZf2jQnIz31uonkgvlVvhDAy8iv42Wv0'
 Time = [' Будущее ',' Настоящее ',' Прошлое ']
 pronouns = ['Я ','Ты ','Мы ','Они ','Он ','Она ']
 verb = ["идти",
