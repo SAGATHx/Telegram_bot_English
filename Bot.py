@@ -3,7 +3,7 @@ import time
 import logging
 import os
 
-from Data import question, verb, Time, pronouns
+from Data import question, verb, Time, pronouns, no
 from aiogram import Bot, Dispatcher, executor, types
 from aiogram.types import ReplyKeyboardMarkup, KeyboardButton, ReplyKeyboardRemove
 from dotenv import load_dotenv
@@ -12,8 +12,10 @@ load_dotenv()
 bot = Bot(token= os.getenv('TOKEN'))
 dp = Dispatcher(bot=bot)
 
-question_pas = ''.join(random.choice(pronouns) + random.choice(verb) + random.choice(Time) + random.choice(question))
-
+def random_pas():
+    question_pas = ''.join(random.choice(pronouns) + random.choice(no) + random.choice(verb) + random.choice(Time) + random.choice(question))
+    answer = question_pas
+    return answer
 
 async def on_startup(_):
     print('Тачка завелась, педаль в пол класть стрелку под камерами...')
@@ -36,7 +38,7 @@ async def start_handler(message: types.Message):
     User_full = message.from_user.full_name
     logging.info(f'{User_id} {User_name} {User_full}', time.asctime())
     if message.text == 'Задай вопрос сейчас!':
-        await message.answer(question_pas)
+        await message.answer(random_pas())
     else:
         await message.answer('Не могу проверить правильно или нет, но ты старался я уверен)')
 
